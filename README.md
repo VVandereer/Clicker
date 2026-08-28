@@ -6,6 +6,8 @@ A simple Clicker for browse game
 [X] No gui mode
 [ ] Arguments support (-Debug, -nogui)
 [ ] Scenario.py
+[ ] Browsers Support
+[ ] Cross-platform
 [ ] Improve logger info (now it's a trash)
 [ ] Smart element searcher
 [ ] Bugfix:
