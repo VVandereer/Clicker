@@ -1,3 +1,4 @@
+# Clicker
 A simple Clicker for browse game
 
 [X] Simple click logger
