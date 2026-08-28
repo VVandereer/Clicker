@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common import utils
 
 
-def Init(baseurl: str = "https://www.google.com"):
+def Init(baseurl: str = "https://www.google.com", nogui=False):
     port = utils.free_port()
     print(f"Start browser on port:{port}")
     profile_dir = os.path.join(os.path.dirname(__file__), "chrome_profile")
@@ -15,6 +15,7 @@ def Init(baseurl: str = "https://www.google.com"):
         f"--user-data-dir={profile_dir}",
         "--new-window",
         baseurl,
+        "--no_sandbox",
         "--disable-features=IsolateOrigins,site-per-process",
         "--disable-dev-shm-usage",
         "--disable-gpu",
@@ -24,6 +25,22 @@ def Init(baseurl: str = "https://www.google.com"):
         "--disable-infobars",
         "--log-level=3"
     ]
+    if nogui:
+        print("no gui mode")
+        gchrome.extend([
+            "--headless=new",
+            "--disable-renderer-backgrounding",
+            "--disable-background-timer-throttling",
+            "--disable-backgrounding-occluded-windows",
+            "--disable-client-side-phishing-detection",
+            "--disable-crash-reporter",
+            "--no-crash-upload",
+            "--disable-extensions",
+            "--disable-low-res-tiling",
+            "--silent",
+            "--window-size=1600,900"
+        ])
+
     proc = subprocess.Popen(gchrome)
     print(f"browser pid:{proc.pid}")
 
@@ -31,6 +48,7 @@ def Init(baseurl: str = "https://www.google.com"):
     options.to_capabilities()['goog:loggingPrefs'] = {'browser': 'ALL'}
     options.set_capability('goog:loggingPrefs', {'browser': 'ALL'})
     options.add_experimental_option("debuggerAddress", f"127.0.0.1:{port}")
+
     driver = webdriver.Chrome(options=options)
     # .get(url: str) -> open URL
     # .back()-> return previous URL

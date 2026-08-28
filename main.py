@@ -22,7 +22,7 @@ def try_click(driver, by, locator):
 
 def main():
     print("Hello from Clicker!")
-    driver = webdriver.Init()
+    driver = webdriver.Init(nogui=True)
     driver.get("https://vmmo.ru/cabinet/wheel")
     input("Browser opened. Login or solve captcha before and press any key..")
 

@@ -1,16 +1,12 @@
+A simple Clicker for browse game
 
-Modules:
-    pynput
-    tkinter
-
-Функции:
-    Запись положения курсора (+ создание действия перемещения курсора)
-        Перемещение курсора
-    Запись действия(клик(пкм/лкм), тащить что-то)
-    Добавление паузы
-    Создание сценария
-        +Запись сценарий в json
-        +Чтение сценария из json
-    Запуск сценария
-    Остановка сценария
-        +Продолжение
+[X] Simple click logger
+[X] Simple ads watcher
+[X] No gui mode
+[ ] Arguments support (-Debug, -nogui)
+[ ] Scenario.py
+[ ] Improve logger info (now it's a trash)
+[ ] Smart element searcher
+[ ] Bugfix:
+    [ ] Misclicking on false (or inactive or not clickable) element
+    [ ] Crash but subprocess doesn't stop
