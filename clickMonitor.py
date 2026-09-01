@@ -22,7 +22,7 @@ def console_read(driver, stop_event):
             time.sleep(0.05)
 
 
-class clickMonitor:
+class ClickMonitor:
     def __init__(self, driver):
         self.__driver = driver
         self.__stop_event = threading.Event()
@@ -35,4 +35,5 @@ class clickMonitor:
 
     def stop(self):
         self.__stop_event.set()
-        self.thread.join()
+        if self.thread is not None and self.thread.is_alive():
+            self.thread.join()
